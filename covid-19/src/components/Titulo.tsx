@@ -1,6 +1,9 @@
-const Titulo = () => {
+const Titulo = (props: { texto: string; subtitulo: string }) => {
     return (
-        <h1>Covid-19</h1>
+        <>
+            <div className="titulo">{props.texto}</div>
+            <div className="subtitulo">{props.subtitulo}</div>
+        </>
     );
 }
 

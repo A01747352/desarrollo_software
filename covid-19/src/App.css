@@ -1,3 +1,67 @@
+.registro {
+display: flex;
+justify-content: space-around;
+align-items: center;
+padding: 1rem;
+margin: 1rem 0;
+background-color: #4b4b4b;
+}
+
+.registro h2 {
+color: white;
+}
+
+.registro-contagios {
+font-size: 1.5rem;
+font-weight: bold;
+color: white;
+background-color: #40005d;
+border: 1px solid white;
+padding: 0.5rem;
+border-radius: 12px;
+}
+
+.fecha {
+display: flex;
+flex-direction: column;
+width: 5.5rem;
+height: 5.5rem;
+border: 1px solid #ececec;
+background-color: #2a2a2a;
+color: white;
+border-radius: 12px;
+align-items: center;
+justify-content: center;
+}
+
+.fecha-mes {
+font-size: 0.75rem;
+font-weight: bold;
+}
+
+.fecha-anio {
+font-size: 0.75rem;
+}
+
+.fecha-dia {
+font-size: 1.5rem;
+font-weight: bold;
+}
+
+.titulo {
+  font-size: 32px;
+  font-weight: bold;
+  margin: 20px;
+  color: blueviolet;
+}
+
+.subtitulo {
+  font-size: 24px;
+  font-weight: 500;
+  margin: 16px ;
+  color: greenyellow;
+}
+
 .counter {
   font-size: 16px;
   padding: 5px 10px;
