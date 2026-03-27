@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap');
 
-/* ─── Variables ─────────────────────────────────────────── */
 :root {
   --bg-dark:       #0e0b08;
   --bg-card:       #16110c;
@@ -14,7 +13,6 @@
   --overlay-dark:  rgba(10, 7, 4, 0.7);
 }
 
-/* ─── Reset & Base ──────────────────────────────────────── */
 *,
 *::before,
 *::after {
@@ -31,7 +29,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Grain texture overlay */
 body::before {
   content: '';
   position: fixed;
@@ -42,7 +39,6 @@ body::before {
   opacity: 0.4;
 }
 
-/* ─── Título ────────────────────────────────────────────── */
 .titulo {
   font-family: 'Cinzel Decorative', serif;
   font-size: clamp(1.4rem, 4vw, 2.8rem);
@@ -53,7 +49,7 @@ body::before {
   color: var(--gold-light);
   padding: 3.5rem 2rem 1rem;
 
-  /* Doble borde decorativo */
+  /* Doble borde decorativo  (Añadido con Claude) */
   border-bottom: 1px solid var(--border-gold);
   position: relative;
 }
@@ -76,7 +72,6 @@ body::before {
   margin: 0.8rem auto 0;
 }
 
-/* ─── Galería (grid) ────────────────────────────────────── */
 .gallery {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -86,7 +81,6 @@ body::before {
   margin: 0 auto;
 }
 
-/* ─── Card ──────────────────────────────────────────────── */
 .card {
   background: var(--bg-card);
   border: 1px solid var(--border-gold);
@@ -96,7 +90,7 @@ body::before {
   animation: fadeUp 0.6s ease both;
 }
 
-/* Esquinas decorativas */
+/* Esquinas decorativas (Añadido con Claude) */
 .card::before,
 .card::after {
   content: '';
@@ -136,7 +130,7 @@ body::before {
     inset 0 0 60px rgba(201, 168, 76, 0.03);
 }
 
-/* Animación de entrada escalonada */
+/* Animación de entrada escalonada (Añadido con Claude) */
 @keyframes fadeUp {
   from {
     opacity: 0;
@@ -155,7 +149,6 @@ body::before {
 .card:nth-child(5) { animation-delay: 0.45s; }
 .card:nth-child(6) { animation-delay: 0.55s; }
 
-/* ─── Imagen dentro de la card ──────────────────────────── */
 .card-image-wrapper {
   position: relative;
   overflow: hidden;
@@ -177,7 +170,7 @@ body::before {
   filter: sepia(5%) brightness(1);
 }
 
-/* Gradiente en la parte inferior de la imagen */
+/* Gradiente en la parte inferior de la imagen (Añadido con Claude) */
 .card-image-wrapper::after {
   content: '';
   position: absolute;
@@ -189,7 +182,6 @@ body::before {
   pointer-events: none;
 }
 
-/* Número de catalogación (estilo museo) */
 .card-image-wrapper::before {
   content: attr(data-index);
   position: absolute;
@@ -202,7 +194,6 @@ body::before {
   z-index: 1;
 }
 
-/* ─── Info de la card ───────────────────────────────────── */
 .card-info {
   padding: 1.1rem 1.2rem 1.4rem;
 }
@@ -234,7 +225,6 @@ body::before {
   color: var(--text-muted);
 }
 
-/* Separador dorado en info */
 .card-info::before {
   content: '';
   display: block;
@@ -244,7 +234,7 @@ body::before {
   margin-bottom: 0.8rem;
 }
 
-/* ─── Responsive ────────────────────────────────────────── */
+/* ─── Responsive (añadido con Claude)──────────────────────────────── */
 @media (max-width: 700px) {
   .gallery {
     grid-template-columns: repeat(2, 1fr);
