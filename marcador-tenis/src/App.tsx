@@ -15,12 +15,6 @@ function App() {
   const [setsGanadosB, setSetsGanadosB] = useState(0)
   const [estado, setEstado] = useState<Estado>('jugando')
   const [ganador, setGanador] = useState<string | null>(null)
-  const [flash, setFlash] = useState<string | null>(null)
-
-  const showFlash = (msg: string) => {
-    setFlash(msg)
-    setTimeout(() => setFlash(null), 1800)
-  }
 
   const ganarGame = (jugador: 'a' | 'b', gA: number, gB: number) => {
     const newGA = jugador === 'a' ? gA + 1 : gA
@@ -42,9 +36,8 @@ function App() {
       setSetsGanadosB(nSB)
       setGamesA(0)
       setGamesB(0)
-      showFlash(`¡Set para ${jugador === 'a' ? 'N1' : 'N2'}!`)
       if (nSA >= 1 || nSB >= 1) {
-        setGanador(jugador === 'a' ? 'JUGADOR N1' : 'JUGADOR N2')
+        setGanador(jugador === 'a' ? 'Diego CARREON' : 'Roberto MARTINEZ')
         setEstado('fin')
       }
     } else {
@@ -80,7 +73,7 @@ function App() {
     setGamesA(0); setGamesB(0)
     setSetsHistA([]); setSetsHistB([])
     setSetsGanadosA(0); setSetsGanadosB(0)
-    setEstado('jugando'); setGanador(null); setFlash(null)
+    setEstado('jugando'); setGanador(null)
   }
 
   const dispA = () => {
@@ -99,13 +92,9 @@ function App() {
   return (
     <div className="scene">
       <div className="court-bg" />
-      {flash && <div className="flash-msg">{flash}</div>}
-
       <div className="scoreboard">
         <div className="board-header">
-          <div className="wim-logo">🎾</div>
-          <div className="court-name">COURT No. 21</div>
-          <div className="wim-logo">🎾</div>
+          <div className="court-name">TAREA MARCADOR TENIS</div>
         </div>
 
         <div className="board-labels">
@@ -121,8 +110,8 @@ function App() {
         </div>
 
         {[
-          { name: 'PLAYER', surname: 'N1', pts: dispA(), games: gamesA, sets: setsGanadosA, hist: setsHistA, isWinner: ganador === 'JUGADOR N1' },
-          { name: 'PLAYER',    surname: 'N2', pts: dispB(), games: gamesB, sets: setsGanadosB, hist: setsHistB, isWinner: ganador === 'JUGADOR N2' },
+          { name: 'Diego', surname: 'CARREON', pts: dispA(), games: gamesA, sets: setsGanadosA, hist: setsHistA, isWinner: ganador === 'Diego CARREON' },
+          { name: 'Roberto',    surname: 'MARTINEZ', pts: dispB(), games: gamesB, sets: setsGanadosB, hist: setsHistB, isWinner: ganador === 'Roberto MARTINEZ' },
         ].map((p, i) => (
           <div key={i} className={`board-row ${p.isWinner ? 'winner-row' : ''}`}>
             <div className="prev-cells">
@@ -139,23 +128,24 @@ function App() {
         ))}
       </div>
 
+      {/* Esta parte me ayudo Claude, lo del Status Bar, definitivamente hace que se vea super bien */}
       <div className="status-bar">
         {estado === 'deuce'      && <span className="badge deuce">DEUCE</span>}
-        {estado === 'ventaja_a'  && <span className="badge adv">VENTAJA — N1</span>}
-        {estado === 'ventaja_b'  && <span className="badge adv">VENTAJA — N2</span>}
-        {estado === 'fin'        && <span className="badge fin">🏆 {ganador}</span>}
+        {estado === 'ventaja_a'  && <span className="badge adv">VENTAJA — CARREON</span>}
+        {estado === 'ventaja_b'  && <span className="badge adv">VENTAJA — MARTINEZ</span>}
+        {estado === 'fin'        && <span className="badge fin">GANA {ganador}</span>}
         {estado === 'jugando'    && <span className="badge playing">EN JUEGO</span>}
       </div>
 
       <div className="controls">
         {estado !== 'fin' ? (
           <>
-            <button className="btn btn-a" onClick={puntoA}><span>PUNTO</span><strong>N1</strong></button>
+            <button className="btn btn-a" onClick={puntoA}><span>PUNTO</span><strong>CARREON</strong></button>
             <button className="btn btn-reset" onClick={reiniciar}>REINICIAR</button>
-            <button className="btn btn-b" onClick={puntoB}><span>PUNTO</span><strong>N2</strong></button>
+            <button className="btn btn-b" onClick={puntoB}><span>PUNTO</span><strong>MARTINEZ</strong></button>
           </>
         ) : (
-          <button className="btn btn-reset wide" onClick={reiniciar}>🔄 NUEVO PARTIDO</button>
+          <button className="btn btn-reset wide" onClick={reiniciar}>NUEVO PARTIDO</button>
         )}
       </div>
     </div>

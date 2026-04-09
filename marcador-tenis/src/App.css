@@ -11,7 +11,10 @@ body, #root {
 .scene {
   min-height: 100vh;
   width: 100%;
-  background: #1a2a1a;
+  background-image: url('./assets/bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,35 +29,10 @@ body, #root {
 .court-bg {
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(ellipse 80% 60% at 50% 40%, #2d4a2d 0%, #1a2a1a 70%),
-    repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(255,255,255,0.02) 40px, rgba(255,255,255,0.02) 41px),
-    repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(255,255,255,0.02) 40px, rgba(255,255,255,0.02) 41px);
+  background: rgba(0, 0, 0, 0.55);
   z-index: 0;
 }
 
-.flash-msg {
-  position: fixed;
-  top: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #f0c040;
-  color: #1a1a00;
-  font-family: 'Oswald', sans-serif;
-  font-weight: 700;
-  font-size: 1.3rem;
-  padding: 12px 36px;
-  border-radius: 4px;
-  z-index: 100;
-  animation: flashIn 0.2s ease;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.5);
-}
-@keyframes flashIn {
-  from { opacity: 0; transform: translateX(-50%) scale(0.9); }
-  to   { opacity: 1; transform: translateX(-50%) scale(1);   }
-}
-
-/* ---- SCOREBOARD ---- */
 .scoreboard {
   position: relative;
   z-index: 1;
@@ -144,7 +122,7 @@ body, #root {
 }
 .p-name strong { font-size: 1.15rem; font-weight: 700; display: block; }
 
-/* LED cells */
+/* LED cells / ESTA PARTE FUE HECHA CON AYUDA DE CLAUDE*/
 .led-cell {
   font-family: 'Share Tech Mono', monospace;
   font-size: 2rem;
@@ -171,7 +149,7 @@ body, #root {
   text-shadow: 0 0 10px rgba(255,230,40,0.9), 0 0 25px rgba(255,200,0,0.5);
 }
 
-/* Status bar */
+/* Status bar / ESTA PARTE FUE HECHA CON AYUDA DE CLAUDE*/
 .status-bar { position: relative; z-index: 1; }
 
 .badge {
@@ -188,7 +166,6 @@ body, #root {
 .badge.adv     { background: rgba(240,140,40,0.2);  color: #f08c40; border: 1px solid rgba(240,140,40,0.4); }
 .badge.fin     { background: rgba(240,200,40,0.25); color: #f0c840; border: 1px solid rgba(240,200,40,0.5); font-size: 1rem; padding: 10px 32px; }
 
-/* Controls */
 .controls {
   position: relative;
   z-index: 1;
