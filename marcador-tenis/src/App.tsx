@@ -103,10 +103,10 @@ function App() {
               <div key={i} className="lbl-prev">SET {i+1}</div>
             ))}
           </div>
-          <div className="col-player lbl">PLAYER</div>
+          <div className="col-player lbl">JUGADOR</div>
           <div className="col-sets lbl">SETS</div>
-          <div className="col-games lbl">GAMES</div>
-          <div className="col-points lbl">POINTS</div>
+          <div className="col-games lbl">JUEGOS</div>
+          <div className="col-points lbl">PUNTOS</div>
         </div>
 
         {[
