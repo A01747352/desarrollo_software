@@ -1,26 +1,33 @@
-
 import "../styles/Tarea.css";
 import { MdOutlineDeleteForever } from "react-icons/md";
 import { ContextoTarea } from "./ProveedorTarea";
 import { useContext } from "react";
+import CalificacionTarea from "./CalificacionTarea";
 
-const Tarea = (props) => {
+const Tarea = ({ tarea }) => {
+  const [, , completarTarea, eliminarTarea] = useContext(ContextoTarea);
 
-  const [ , , completarTarea, eliminarTarea ] = useContext(ContextoTarea);
-  console.log(props.completa);
-  
-  const estiloTarea = "tarea-contenedor" +(props.completa ? " completa" : "");
-  console.log(estiloTarea);
+  if (!tarea) return null;
 
-  
+  const estiloTarea = "tarea-contenedor" + (tarea.completa ? " completa" : "");
+
   return (
-    <div className={estiloTarea}>
-      <div className="tarea-descripcion" onClick={() => completarTarea(props.id)}>
-        {props.descripcion}
+    <div className="tarea-wrapper">
+      <div className={estiloTarea}>
+        <div
+          className="tarea-descripcion"
+          onClick={() => completarTarea(tarea.id)}
+        >
+          {tarea.descripcion}
         </div>
-      <div className="tarea-icono-borrar" onClick={() => eliminarTarea(props.id)}>
-        <MdOutlineDeleteForever />
+        <div
+          className="tarea-icono-borrar"
+          onClick={() => eliminarTarea(tarea.id)}
+        >
+          <MdOutlineDeleteForever />
+        </div>
       </div>
+      <CalificacionTarea tarea={tarea} />
     </div>
   );
 };

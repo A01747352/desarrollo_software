@@ -11,6 +11,11 @@ function App() {
         <h1>
           Lista de tareas <BiTask />
         </h1>
+        <br></br>
+        <h2>
+          Autor: Diego Carreón Aguirre (A01747352)
+        </h2>
+        <br></br>
         <ListaTareas />
       </div>
     </ProveedorTarea>
