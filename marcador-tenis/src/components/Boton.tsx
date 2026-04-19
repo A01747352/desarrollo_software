@@ -1,9 +1,21 @@
-import "../styles/Boton.css";
+import { useTenis } from './TenisContext'
+import '../styles/Boton.css'
 
-const Boton = (props: { texto: string; onClick: () => void }) => {
+interface BotonProps {
+  texto: string
+  onClick: () => void
+  variante?: 'a' | 'b' | 'reset'
+}
+
+const Boton = ({ texto, onClick, variante = 'reset' }: BotonProps) => {
+  const { darkMode } = useTenis()
+
   return (
-    <button className="boton-tenis" onClick={props.onClick}>
-        {props.texto}
+    <button
+      className={`boton-tenis boton-${variante} ${darkMode ? 'boton-dark' : 'boton-light'}`}
+      onClick={onClick}
+    >
+      {texto}
     </button>
   )
 }

@@ -1,10 +1,13 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import { TenisProvider } from './components/TenisContext'
+import App from './App'
 import './index.css'
-import App from './App.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App />
-  </StrictMode>,
+    <TenisProvider>
+      <App />
+    </TenisProvider>
+  </StrictMode>
 )

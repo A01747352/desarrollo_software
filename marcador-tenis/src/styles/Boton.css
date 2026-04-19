@@ -1,18 +1,30 @@
 .boton-tenis {
-    width: 250px;
-    height: 70px;
-    font-size: 1.3rem;
-    color: aliceblue;
-    margin: 10px;
-    cursor: pointer;
-    background-color: rgb(7, 102, 72);
-    border-radius: 6px;
-    border: 4px solid gray;
+  min-width: 130px;
+  padding: 14px 28px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border-width: 2px;
+  border-style: solid;
 }
-/* Opcional */
-.boton-tenis:hover {
-    background-color: rgb(7, 102, 72, 0.8);
-}
-.boton-tenis:active {
-    background-color: rgb(7, 102, 72, 0.6);
-}
+
+.boton-tenis:hover  { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.4); }
+.boton-tenis:active { transform: translateY(0); }
+
+/* Variantes de color de jugador */
+.boton-a { background: #1a3d6a; border-color: #3a6aaa; color: #e8f0e8; }
+.boton-a:hover { background: #234d80; }
+
+.boton-b { background: #6a1a1a; border-color: #aa3a3a; color: #e8f0e8; }
+.boton-b:hover { background: #803030; }
+
+/* Reset en modo oscuro */
+.boton-reset.boton-dark { background: #2a2a2a; border-color: #555; color: #e8e8e8; }
+.boton-reset.boton-dark:hover { background: #3a3a3a; }
+
+/* Reset en modo claro */
+.boton-reset.boton-light { background: #e8e8e8; border-color: #999; color: #1a1a1a; }
+.boton-reset.boton-light:hover { background: #d0d0d0; }

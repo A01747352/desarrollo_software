@@ -1,10 +1,19 @@
 .puntos-tenis {
-    min-width: 300px;
-    font-size: 4rem;
-    border: 8px solid gray;
-    border-radius: 20px;
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 2rem;
+  min-width: 80px;
+  text-align: center;
+  letter-spacing: 2px;
+  padding: 4px 8px;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.puntos-dark {
+  color: #c8e640;
+  text-shadow: 0 0 8px rgba(180,220,30,0.7), 0 0 20px rgba(180,220,30,0.3);
+}
+
+.puntos-light {
+  color: #1a6a1a;
+  text-shadow: 0 0 6px rgba(20,100,20,0.3);
 }

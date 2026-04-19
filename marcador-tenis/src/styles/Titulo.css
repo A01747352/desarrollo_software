@@ -1,4 +1,12 @@
 .titulo-tenis {
-    font-size: 2rem;
-    margin: 16px;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 1.8rem;
+  letter-spacing: 4px;
+  text-align: center;
+  padding: 8px 16px;
+  transition: color 0.3s ease;
 }
+
+.titulo-dark  { color: #f0f0e0; }
+.titulo-light { color: #1a1a1a; }

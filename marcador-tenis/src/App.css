@@ -3,11 +3,14 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body, #root {
-  width: 100%; min-height: 100vh;
-  display: flex; align-items: center; justify-content: center;
-  border: none;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+/* ── Escena ─────────────────────────────────────────────────────────────── */
 .scene {
   min-height: 100vh;
   width: 100%;
@@ -24,62 +27,98 @@ body, #root {
   font-family: 'Oswald', sans-serif;
   position: relative;
   overflow: hidden;
+  transition: background-color 0.4s ease;
 }
 
+/* Overlay oscuro / claro */
 .court-bg {
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.55);
   z-index: 0;
+  transition: background 0.4s ease;
+}
+.court-bg-light {
+  background: rgba(255, 255, 255, 0.65);
 }
 
+/* ── Botón de tema ──────────────────────────────────────────────────────── */
+.theme-toggle {
+  position: relative;
+  z-index: 10;
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  padding: 8px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.theme-toggle-dark {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.25);
+  color: #e0e0d0;
+}
+.theme-toggle-dark:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+.theme-toggle-light {
+  background: rgba(0,0,0,0.07);
+  border-color: rgba(0,0,0,0.2);
+  color: #2a2a1a;
+}
+.theme-toggle-light:hover {
+  background: rgba(0,0,0,0.13);
+}
+
+/* ── Scoreboard ─────────────────────────────────────────────────────────── */
 .scoreboard {
   position: relative;
   z-index: 1;
-  background: #1d3d1d;
-  border: 4px solid #2e5c2e;
   border-radius: 6px;
   width: min(860px, 100%);
+  overflow: hidden;
+  transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.scoreboard-dark {
+  background: #1d3d1d;
+  border: 4px solid #2e5c2e;
   box-shadow:
     0 0 0 2px #1a2a1a,
     0 0 0 4px #3a6a3a,
     0 8px 40px rgba(0,0,0,0.7),
     inset 0 0 80px rgba(0,0,0,0.3);
-  overflow: hidden;
 }
 
-.board-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  padding: 12px 20px 8px;
-  border-bottom: 2px solid #2e5c2e;
+.scoreboard-light {
+  background: #f5f5e8;
+  border: 4px solid #8aaa5a;
+  box-shadow:
+    0 0 0 2px #d5e5b0,
+    0 0 0 4px #a0c060,
+    0 8px 40px rgba(0,0,0,0.2);
 }
 
-.wim-logo { font-size: 1.4rem; }
-
-.court-name {
-  font-family: 'Oswald', sans-serif;
-  font-weight: 700;
-  font-size: 1.8rem;
-  color: #f0f0e0;
-  letter-spacing: 4px;
-}
-
+/* ── Labels ─────────────────────────────────────────────────────────────── */
 .board-labels {
   display: grid;
   grid-template-columns: auto 1fr auto auto auto;
   padding: 6px 12px;
-  border-bottom: 1px solid #2e5c2e;
 }
+
+.scoreboard-dark .board-labels  { border-bottom: 1px solid #2e5c2e; }
+.scoreboard-light .board-labels { border-bottom: 1px solid #aac070; }
 
 .col-prev-group { display: flex; gap: 4px; }
 
 .lbl-prev, .lbl {
   font-size: 0.62rem;
   letter-spacing: 2px;
-  color: #7aaa7a;
   text-align: center;
   padding: 0 8px;
 }
@@ -87,19 +126,49 @@ body, #root {
 .col-player.lbl { text-align: left; padding-left: 12px; }
 .col-sets.lbl, .col-games.lbl, .col-points.lbl { min-width: 80px; }
 
+.scoreboard-dark  .lbl, .scoreboard-dark  .lbl-prev { color: #7aaa7a; }
+.scoreboard-light .lbl, .scoreboard-light .lbl-prev { color: #5a7a2a; }
+
+/* ── Filas ───────────────────────────────────────────────────────────────── */
 .board-row {
   display: grid;
   grid-template-columns: auto 1fr auto auto auto;
   align-items: center;
   padding: 10px 12px;
-  border-bottom: 1px solid rgba(46,92,46,0.5);
   transition: background 0.3s;
 }
 .board-row:last-child { border-bottom: none; }
+
+.scoreboard-dark  .board-row { border-bottom: 1px solid rgba(46,92,46,0.5); }
+.scoreboard-light .board-row { border-bottom: 1px solid rgba(140,170,80,0.4); }
+
 .board-row.winner-row { background: rgba(240,200,60,0.07); }
 
+/* ── Celdas previas ─────────────────────────────────────────────────────── */
 .prev-cells { display: flex; gap: 4px; }
 
+.led-cell.prev {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.6rem;
+  min-width: 48px;
+  text-align: center;
+  border-radius: 3px;
+  padding: 4px 8px;
+}
+
+.scoreboard-dark  .led-cell.prev {
+  color: #8ab830;
+  text-shadow: 0 0 6px rgba(120,180,20,0.5);
+  border: 1px solid rgba(100,140,20,0.2);
+  background: rgba(0,0,0,0.2);
+}
+.scoreboard-light .led-cell.prev {
+  color: #3a6a1a;
+  border: 1px solid rgba(60,120,20,0.3);
+  background: rgba(255,255,255,0.4);
+}
+
+/* ── Celda de jugador ────────────────────────────────────────────────────── */
 .player-cell {
   display: flex;
   align-items: center;
@@ -122,34 +191,27 @@ body, #root {
 }
 .p-name strong { font-size: 1.15rem; font-weight: 700; display: block; }
 
-/* LED cells / ESTA PARTE FUE HECHA CON AYUDA DE CLAUDE*/
+/* ── LED cells (sets / juegos) ──────────────────────────────────────────── */
 .led-cell {
   font-family: 'Share Tech Mono', monospace;
   font-size: 2rem;
-  color: #c8e640;
   min-width: 80px;
   text-align: center;
-  text-shadow: 0 0 8px rgba(180,220,30,0.7), 0 0 20px rgba(180,220,30,0.3);
   letter-spacing: 2px;
   padding: 4px 8px;
 }
 
-.led-cell.prev {
-  font-size: 1.6rem;
-  min-width: 48px;
-  color: #8ab830;
-  text-shadow: 0 0 6px rgba(120,180,20,0.5);
-  border: 1px solid rgba(100,140,20,0.2);
-  border-radius: 3px;
-  background: rgba(0,0,0,0.2);
+.scoreboard-dark  .led-cell.sets,
+.scoreboard-dark  .led-cell.games {
+  color: #c8e640;
+  text-shadow: 0 0 8px rgba(180,220,30,0.7), 0 0 20px rgba(180,220,30,0.3);
+}
+.scoreboard-light .led-cell.sets,
+.scoreboard-light .led-cell.games {
+  color: #2a6a0a;
 }
 
-.led-cell.points.adv-lit {
-  color: #ffee40;
-  text-shadow: 0 0 10px rgba(255,230,40,0.9), 0 0 25px rgba(255,200,0,0.5);
-}
-
-/* Status bar / ESTA PARTE FUE HECHA CON AYUDA DE CLAUDE*/
+/* ── Status bar ─────────────────────────────────────────────────────────── */
 .status-bar { position: relative; z-index: 1; }
 
 .badge {
@@ -166,6 +228,13 @@ body, #root {
 .badge.adv     { background: rgba(240,140,40,0.2);  color: #f08c40; border: 1px solid rgba(240,140,40,0.4); }
 .badge.fin     { background: rgba(240,200,40,0.25); color: #f0c840; border: 1px solid rgba(240,200,40,0.5); font-size: 1rem; padding: 10px 32px; }
 
+/* Badges en modo claro */
+.scene-light .badge.playing { background: rgba(40,120,20,0.12); color: #2a6a0a; border-color: rgba(40,120,20,0.3); }
+.scene-light .badge.deuce   { background: rgba(160,100,0,0.12);  color: #7a5000; border-color: rgba(160,100,0,0.3); }
+.scene-light .badge.adv     { background: rgba(180,80,0,0.12);   color: #8a3a00; border-color: rgba(180,80,0,0.3); }
+.scene-light .badge.fin     { background: rgba(160,120,0,0.15);  color: #7a5a00; border-color: rgba(160,120,0,0.4); }
+
+/* ── Controles ──────────────────────────────────────────────────────────── */
 .controls {
   position: relative;
   z-index: 1;
@@ -175,33 +244,3 @@ body, #root {
   flex-wrap: wrap;
   justify-content: center;
 }
-
-.btn {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-  padding: 14px 28px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-family: 'Oswald', sans-serif;
-  font-size: 0.75rem;
-  letter-spacing: 2px;
-  color: #e8f0e8;
-  background: #2d5a2d;
-  border: 2px solid #4a8a4a;
-  transition: all 0.15s ease;
-  min-width: 130px;
-}
-.btn span     { font-size: 0.7rem; letter-spacing: 3px; opacity: 0.8; }
-.btn strong   { font-size: 1.1rem; letter-spacing: 2px; }
-.btn:hover    { background: #3a6e3a; transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.4); }
-.btn:active   { transform: translateY(0); }
-
-.btn-a        { background: #1a3d6a; border-color: #3a6aaa; }
-.btn-a:hover  { background: #234d80; }
-.btn-b        { background: #6a1a1a; border-color: #aa3a3a; }
-.btn-b:hover  { background: #803030; }
-.btn-reset    { background: #2a2a2a; border-color: #555; font-size: 0.8rem; letter-spacing: 2px; min-width: 100px; }
-.btn-reset:hover  { background: #3a3a3a; }
-.btn-reset.wide   { min-width: 220px; padding: 16px 40px; font-size: 1rem; }

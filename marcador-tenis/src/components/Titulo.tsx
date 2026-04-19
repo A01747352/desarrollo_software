@@ -1,11 +1,14 @@
-import "../styles/Titulo.css";
+import { useTenis } from './TenisContext'
+import '../styles/Titulo.css'
 
-const Titulo = (props: {texto: string}) => {
+const Titulo = ({ texto }: { texto: string }) => {
+  const { darkMode } = useTenis()
+
   return (
-    <div className="titulo-tenis">
-      {props.texto}
+    <div className={`titulo-tenis ${darkMode ? 'titulo-dark' : 'titulo-light'}`}>
+      {texto}
     </div>
   )
 }
 
-export default Titulo;
+export default Titulo
